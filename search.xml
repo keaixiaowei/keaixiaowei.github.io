@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>将博客推送至github</title>
+      <link href="/2022/07/29/%E5%B0%86%E5%8D%9A%E5%AE%A2%E6%8E%A8%E9%80%81%E8%87%B3github/"/>
+      <url>/2022/07/29/%E5%B0%86%E5%8D%9A%E5%AE%A2%E6%8E%A8%E9%80%81%E8%87%B3github/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-本地安装Hexo博客框架并推送到GitHub"><a href="#1-本地安装Hexo博客框架并推送到GitHub" class="headerlink" title="1 本地安装Hexo博客框架并推送到GitHub"></a>1 本地安装Hexo博客框架并推送到GitHub</h2><h3 id="1-1-将博客部署到-github-个人主页上"><a href="#1-1-将博客部署到-github-个人主页上" class="headerlink" title="1.1 将博客部署到 github 个人主页上"></a>1.1 将博客部署到 github 个人主页上</h3><p><strong>第一步：首先登录github，然后新建仓库</strong></p><p>注意：命名格式为：用户名.github.io</p><p><strong>第二步：进入F:\myblog安装一个git的部署部件</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure><p><strong>出现错误：</strong>cnpm安装过程中提示optional install error: Package require os(darwin) not compatible with your platform(win32)</p><p>运行cnpm install后，出现</p><p><img src="/img%5C%E5%9B%BE%E7%89%87%5C8%5C1-01(1).png" alt="本地png图片PictureTest.png"></p><p><strong>解决方法：</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cnpm rebuild node-sass</span><br><span class="line">#不放心可以重新安装下</span><br><span class="line">cnpm install</span><br></pre></td></tr></table></figure><p><strong>第三步：在github上创建仓库</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 你的邮箱地址</span><br></pre></td></tr></table></figure><p><strong>第四步：在GitHub 或者 Gitee 上添加 SSH key</strong></p><p>在F:myblog目录下安装 hexo-deployer-git 插件 （git bash here 处安装）</p><p><strong>在github点击头像-&gt;setting</strong></p><p><img src="/img%5C%E5%9B%BE%E7%89%87%5C8%5C1-01(2).png" alt="本地png图片PictureTest.png"></p><p><strong>点击SSH and GPG keys</strong></p><p><img src="/img%5C%E5%9B%BE%E7%89%87%5C8%5C1-01(3).png" alt="本地png图片PictureTest.png"></p><p><strong>点击New SSH key</strong></p><p><img src="/img%5C%E5%9B%BE%E7%89%87%5C8%5C1-01(4).png" alt="本地png图片PictureTest.png"></p><p><img src="/img%5C%E5%9B%BE%E7%89%87%5C8%5C1-01(5).png" alt="本地png图片PictureTest.png"></p><p><strong>第五步：测试本机本github密钥对是否建立有效连接：git命令ssh -T github.com，如下返回表示连接成功。</strong></p><p><strong>出现错误：</strong></p><p><img src="/img%5C%E5%9B%BE%E7%89%87%5C8%5C1-01(6).png" alt="本地png图片PictureTest.png"></p><p><strong>解决方法：</strong>本机的这个git仓库并没有和这个SSH key 关联上</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add &quot;你的 id-rsa 文件地址&quot;</span><br></pre></td></tr></table></figure><p>执行ssh-add “你的 id-rsa 文件地址”出现<strong>Could not open a connection to your authentication agent</strong></p><p><strong>解决方法：</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行如下命令　ssh-agent bash</span><br><span class="line">然后再执行 ssh-add ~/.ssh/id_ras 即可。</span><br></pre></td></tr></table></figure><p><strong>第六步： 修改配置文件_config.yml如下：</strong></p><p><strong>说明：</strong>仓库的ssh链接如下</p><p><img src="/img%5C%E5%9B%BE%E7%89%87%5C8%5C1-01(7).png" alt="本地png图片PictureTest.png"></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: git@github.com:keaixiaowei/keaixiaowei.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure><p><strong>SSH链接</strong></p><p><strong>切记：分支branch切记修改为 main，之前github的默认主分支为master，现已经改为main</strong> ！！！</p><p><strong>第七步：接着hexo clean|hexo g|hexo d就可以远端部署到github上面去啦</strong></p><p><strong>第八步：使用仓库名+.github.io来访问博客主页面。keaixiaowei.github.io</strong></p><p><img src="/img%5C%E5%9B%BE%E7%89%87%5C8%5C1-01(8).png" alt="本地png图片PictureTest.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo博客搭建 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo博客搭建</title>
       <link href="/2022/07/28/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
       <url>/2022/07/28/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
