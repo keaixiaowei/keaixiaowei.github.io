@@ -1,0 +1,576 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>刷题笔记 | 憨憨小胖</title><meta name="keywords" content="力扣刷题笔记"><meta name="author" content="蔡伟"><meta name="copyright" content="蔡伟"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.   力扣7-整数反转(Hot100) 见图解算法  2.   力扣****8-字符串转换整数(Hot100) 注意，碰到字母就停止。  3.   力扣****9-回文数(Hot100) 见图解算法  4.   力扣****12-整数转罗马数字(Hot100) 贪心算法-哈希解法  5.   力扣****13-罗马数字转整数(Hot100) 先构建一个哈希数组map&lt;char,int&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刷题笔记">
+<meta property="og:url" content="http://example.com/2022/08/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="憨憨小胖">
+<meta property="og:description" content="1.   力扣7-整数反转(Hot100) 见图解算法  2.   力扣****8-字符串转换整数(Hot100) 注意，碰到字母就停止。  3.   力扣****9-回文数(Hot100) 见图解算法  4.   力扣****12-整数转罗马数字(Hot100) 贪心算法-哈希解法  5.   力扣****13-罗马数字转整数(Hot100) 先构建一个哈希数组map&lt;char,int&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/5.jpg">
+<meta property="article:published_time" content="2022-08-03T03:10:22.000Z">
+<meta property="article:modified_time" content="2022-08-03T03:23:46.778Z">
+<meta property="article:author" content="蔡伟">
+<meta property="article:tag" content="力扣刷题笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/5.jpg"><link rel="shortcut icon" href="/img/%E4%B8%BB%E9%A1%B5%E8%83%8C%E6%99%AF%E5%9B%BE.jpg"><link rel="canonical" href="http://example.com/2022/08/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '刷题笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-08-03 11:23:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="/img/%E5%A4%B4%E5%83%8F.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E"><i class="fa-fw /about/"></i><span> 0</span></a></li><li><a class="site-page child" href="/myself"><i class="fa-fw /myself/"></i><span> 1</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">憨憨小胖</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E"><i class="fa-fw /about/"></i><span> 0</span></a></li><li><a class="site-page child" href="/myself"><i class="fa-fw /myself/"></i><span> 1</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">刷题笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-03T03:10:22.000Z" title="发表于 2022-08-03 11:10:22">2022-08-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-03T03:23:46.778Z" title="更新于 2022-08-03 11:23:46">2022-08-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">力扣刷题笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="刷题笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p> <strong>1.</strong>   <strong>力扣7-整数反转(Hot100)</strong></p>
+<p>见图解算法</p>
+<p> <strong>2.</strong>   <strong>力扣****8-<strong><strong>字符串转换整数</strong></strong>(Hot100)</strong></p>
+<p>注意，碰到字母就停止。</p>
+<p> <strong>3.</strong>   <strong>力扣****9-<strong><strong>回文数</strong></strong>(Hot100)</strong></p>
+<p>见图解算法</p>
+<p> <strong>4.</strong>   <strong>力扣****12-<strong><strong>整数转罗马数字</strong></strong>(Hot100)</strong></p>
+<p>贪心算法-哈希解法</p>
+<p> <strong>5.</strong>   <strong>力扣****13-<strong><strong>罗马数字转整数</strong></strong>(Hot100)</strong></p>
+<p>先构建一个哈希数组map&lt;char,int&gt;，通过观察我们发现，只有在遇到特殊情况时，两个字符中左边的字符小于右边的字符，且等于右边的字符代表的数减左边字符代表的数。 比如 CM 等于1000 - 1001000−100，XC等于100 - 10100−10…</p>
+<p>因此，我们将字符：数值存在Roman2Int的哈希表中。然后从左到右遍历每个字符，如果 s[i] &lt; s[i+1]，就将结果减去 s[i] 代表的数字；否则，将结果加上 s[i] 代表的数字。</p>
+<p> <strong>6.</strong>   <strong>力扣****14-<strong><strong>最长公共前缀</strong></strong>(Hot100)</strong></p>
+<p>当字符串数组长度为0时则公共前缀为空，直接返回</p>
+<p>令最长公共前缀ans的值为第一个字符串，进行初始化</p>
+<p>遍历后面的字符串，依次将其与ans进行比较，两两找出公共前缀，最终结果即为最长公共前缀</p>
+<p>如果查找过程中出现了ans为空的情况，则公共前缀不存在直接返回</p>
+<p> <strong>7.</strong>   *<em>力扣</em>***15-**<strong>三数之和</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>​                               </p>
+<p> <strong>8.</strong>   *<em>力扣</em>***17-**<strong>电话号码的字母组合</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>首先定义一个字符串数组存储2-9所映射的字符串，在用回溯算法三部曲解题</p>
+<p> <strong>9.</strong>   *<em>力扣</em>***18-**<strong>四数之和</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>对于四数之和，但是有一些细节需要注意，例如：不要判断nums[k] &gt; target 就返回了，三数之和可以通过nums[i] &gt; 0就返回了，因为0已经是确定的数了，四数之和这道题目target是任意值。对于重复元素:跳过，避免出现重复解。四数之和的双指针解法是两层for循环nums[k] + nums[i]为确定值，依然是循环内有left和right下标作为双指针，找出nums[k] + nums[i] + nums[left] + nums[right] &#x3D;&#x3D; target的情况。</p>
+<p><strong>10.</strong>   *<em>力扣</em>***20-**<strong>有效的括号</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p><strong>11.</strong>   <strong>力扣<strong><strong>25-K</strong></strong>个一组翻转链表**</strong>(Hot100)**</p>
+<p>利用反转链表解题，见图解算<strong>法</strong></p>
+<p><strong>12.</strong>   <strong>力扣****29-<strong><strong>两数相除</strong></strong>(Hot100)</strong></p>
+<p><strong>第一减法代替除法</strong></p>
+<p>遇到两数的符号位不相同的话，利用异或来表示符号位，最后结果乘以这个就可以。</p>
+<p><strong>第二考虑边界情况</strong></p>
+<p>有两种特殊情况，一是-INT_MIN除以-1就越界了，就直接返回INT_MAX最大值，二是，-INT_MIN和1，按照之前版本的算法，直接就返回0，与上述结果不一样。采用if(a&gt;0) a&#x3D;-a ,if(b&gt;0) b&#x3D; -b解决。</p>
+<p><strong>第三</strong> <strong>算法优化</strong></p>
+<p>然后就是算法优化。</p>
+<p><strong>13.</strong>   <strong>力扣****31-<strong><strong>下一个排列</strong></strong>(Hot100)</strong></p>
+<p><strong>分析过程：</strong></p>
+<p>**1.**我们希望下一个数比当前数大，这样才满足“下一个排列”的定义。因此只需要将后面的「大数」与前面的「小数」交换，就能得到一个更大的数。比如 123456，将 5 和 6 交换就能得到一个更大的数 123465。</p>
+<p>**2.**我们还希望下一个数增加的幅度尽可能的小，这样才满足“下一个排列与当前排列紧邻“的要求。为了满足这个要求，我们需要：在尽可能靠右的低位进行交换，需要从后向前查找将一个 尽可能小的「大数」 与前面的「小数」交换。比如 123465，下一个排列应该把 5 和 4 交换而不是把 6 和 4 交换。将「大数」换到前面后，需要将「大数」后面的所有数重置为升序，升序排列就是最小的排列。以 123465 为例：首先按照上一步，交换 5 和 4，得到 123564；然后需要将 5 之后的数重置为升序，得到 123546。显然 123546 比 123564 更小，123546 就是 123465 的下一个排列</p>
+<p><strong>算法过程：</strong></p>
+<p>**1.**从后向前查找第一个相邻升序的元素对 (i,j)，满足 A[i] &lt; A[j]。此时 [j,end) 必然是降序</p>
+<p>**2.**在 [j,end) 从后向前查找第一个满足 A[i] &lt; A[k] 的 k。A[i]、A[k] 分别就是上文所说的「小数」、「大数」</p>
+<p>**3.**将 A[i] 与 A[k] 交换</p>
+<p>**4.**可以断定这时 [j,end) 必然是降序，逆置 [j,end)，使其升序</p>
+<p>**5.**如果在步骤 1 找不到符合的相邻元素对，说明当前 [begin,end) 为一个降序顺序，则直接跳到步骤 4</p>
+<p><strong>14.</strong>   <strong>力扣****32-<strong><strong>最长有效括号</strong></strong>(Hot100)</strong></p>
+<p>1.遍历字符串，初始化初始位置为0</p>
+<p>2.当字符为“(”时，就入栈</p>
+<p>3.当字符为“)”时，,那么弹出栈顶元素 （代表栈顶的左括号匹配到了右括号），出栈后：</p>
+<p>如果栈不为空，说明以当前右括号为右端点的合法括号序列的左端点为栈顶元素的下一个元素，则更新答案<code>i - st.top()</code> 。</p>
+<p>如果栈为空，说明以当前右括号为右端点的合法括号序列的左端点为start，则更新答案 i - start + 1。</p>
+<p>4、遇到右括号)且当前栈为空，则当前的 start 开始的子串不再可能为合法子串了，下一个合法子串的起始位置可能是 i + 1，更新 start &#x3D; i + 1。</p>
+<p><strong>15.</strong>   <strong>力扣****33-<strong><strong>搜索旋转排序数组</strong></strong>(Hot100)</strong></p>
+<p>第一类</p>
+<p>22 33 44 55 66 77 11 这种，也就是 nums[start] &lt; nums[mid]。此例子中就是 2 &lt; 5；</p>
+<p>这种情况下，前半部分有序。因此如果 nums[start] &lt;&#x3D;target&lt;nums[mid]，则在前半部分找，否则去后半部分找。</p>
+<p>第二类</p>
+<p>66 77 11 22 33 44 55 这种，也就是 nums[start] &gt; nums[mid]。此例子中就是 6 &gt; 2；</p>
+<p>这种情况下，后半部分有序。因此如果 nums[mid] &lt;target&lt;&#x3D;nums[end]。则在后半部分找，否则去前半部分找。</p>
+<p><strong>16.</strong>   *<em>力扣</em>***38-<strong><strong>外观数列</strong></strong>(Hot100)**<strong>死记硬背</strong></p>
+<p>一个朴素的想法是：根据题意进行模拟，从起始条件k &#x3D; 1时ans &#x3D; “1” 出发，逐步递推到 k &#x3D; n的情况，对于第k项而言，其实就是对第k - 1项的「连续段」的描述，而求「连续段」长度，可以使用双指针实现。</p>
+<p><strong>17.</strong>   *<em>力扣</em>***39-**<strong>组合总和</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>按照回溯三部曲解题，注意一点判断下一层已经大于目标值，就没有必要往下一层递归。</p>
+<p><strong>18.</strong>   *<em>力扣</em>**<em>40-<strong><strong>组合总和</strong></strong>II</em>*</p>
+<p><strong>二刷出现问题</strong></p>
+<p>因为candidates中的每个数字在每个组合只能使用一次，在同一树层不能重复使用，所以需要去重，使用startindex和condidates[i]，condidates[i-1]进行去重。</p>
+<p><strong>19.</strong>   <strong>力扣****41-<strong><strong>缺失的第一个整数</strong></strong>(Hot100)</strong></p>
+<p>原地交换</p>
+<p><strong>20.</strong>   <strong>力扣****42-<strong><strong>接雨水</strong></strong>(Hot100)</strong></p>
+<p>在上一节的双指针解法中，我们可以看到只要记录左边柱子的最高高度 和 右边柱子的最高高度，就可以计算当前位置的雨水面积，这就是通过列来计算。</p>
+<p>当前列雨水面积：min(左边柱子的最高高度，记录右边柱子的最高高度) - 当前柱子高度。</p>
+<p>为了得到两边的最高高度，使用了双指针来遍历，每到一个柱子都向两边遍历一遍，这其实是有重复计算的。我们把每一个位置的左边最高高度记录在一个数组上（maxLeft），右边最高高度记录在一个数组上（maxRight）。这样就避免了重复计算，这就用到了动态规划。</p>
+<p>当前位置，左边的最高高度是前一个位置的左边最高高度和本高度的最大值。即从左向右遍历：maxLeft[i] &#x3D; max(height[i], maxLeft[i - 1]);从右向左遍历：maxRight[i] &#x3D; max(height[i], maxRight[i + 1]);这样就找到递推公式。</p>
+<p><strong>21.</strong>   <strong>力扣****43-<strong><strong>字符串相乘</strong></strong>(Hot100)</strong></p>
+<p>比如num1 &#x3D; “2”,num2 &#x3D; “3” ，算法中的C[i] &#x3D; {6,0};要先取掉前导0。</p>
+<p><strong>22.</strong>   *<em>力扣</em>***46-**<strong>全排列</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>首先[1,2]，[2,1]是不同的结果，与组合问题不一样，所以需要用一个数组记录一下，比如，[1,2,3]，取完1时，得到[1,2,3]，[1,3,2]，之后，在取2时，1也可以在取一次，但是2就是不能再取了。</p>
+<p><strong>23.</strong>   *<em>力扣</em>**<em>47-<strong><strong>全排列</strong></strong>II</em>*</p>
+<p><strong>二刷出现问题</strong></p>
+<p>相比于力扣46-全排列，还要对结果去重。</p>
+<p><strong>24.</strong>   <strong>力扣****48-<strong><strong>旋转图像</strong></strong>(Hot100)</strong></p>
+<p>以对角线为基准，反转元素</p>
+<p>以中间为基准，反转元素，这时用到了双指针方法</p>
+<p><strong>25.</strong>   <strong>力扣****49-<strong><strong>字母异位词分组</strong></strong>(Hot100)</strong></p>
+<p>先遍历strs，将各个字符串排序，将排序后相同的结果存在unordered_map中，在遍历unordered_map，将相同结果的字符串存在vector&lt;vector<string>&gt;中。</p>
+<p><strong>26.</strong>   *<em>力扣</em>***55-**<strong>跳跃游戏</strong></p>
+<p>for循环中的小于等于cover是负责下标到最大覆盖范围是否都满足条件</p>
+<p><strong>27.</strong>   *<em>力扣</em>**<em>63-<strong><strong>不同路径</strong></strong>II</em>*</p>
+<p>for循环一旦不满足条件就跳出循环</p>
+<p><strong>28.</strong>   <strong>力扣****64-<strong><strong>最小路径和</strong></strong>(Hot100)</strong></p>
+<p>使用动态规划解决这题，dp[i][j]表示从[0][0]到[i][j]的最小路径。</p>
+<p><strong>29.</strong>   <strong>力扣<strong><strong>69-x</strong></strong>的平方根</strong></p>
+<p>典型案例:9</p>
+<p><strong>30.</strong>   *<em>力扣</em>***75-**<strong>颜色分类</strong></p>
+<p>先用快速排序分割，定义0的区间为[0,p0)，定义1的区间为[p0,i]，定义2的区间为(p2,len-1]，初始化p0、i、p2，要遵循循环不变量，所以p0 &#x3D; 0,i &#x3D; 0,p2 &#x3D; len-1，循环条件是i &lt;&#x3D; p2，遍历数组。</p>
+<p>(1)  当nums[i] &#x3D;&#x3D; 0时，就交换nums[i]和nums[p0]的值，调整0的区间，所以p0++，而i++是为了看数组下一个位置的值。</p>
+<p>(2)  当nums[i] &#x3D;&#x3D; 1时，调整1的区间，所以i++。</p>
+<p>(3)  当nums[i] &#x3D;&#x3D; 2时，就交换nums[i]和nums[p0]的值，调整2的区间，所以p2–。</p>
+<p><strong>31.</strong>   *<em>力扣</em>***76-**<strong>最小覆盖子串</strong></p>
+<p>见题解</p>
+<p><strong>32.</strong>   *<em>力扣</em>***77-**<strong>组合</strong></p>
+<p>注意剪枝优化</p>
+<p><strong>33.</strong>   *<em>力扣</em>***78-**<strong>子集</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>子集问题也可以当做组合问题来解决，在每一层递归的时候，就将结果存入到结果数组当中。</p>
+<p><strong>34.</strong>   <strong>力扣****79-<strong><strong>单词搜索</strong></strong>(Hot100)</strong></p>
+<p>利用深度优先遍历寻找路径，记录走过的点和以及往四个方向走是否超出边界。</p>
+<p><strong>35.</strong>   <strong>力扣****84-<strong><strong>柱状图中最大的矩形</strong></strong>(Hot100)</strong></p>
+<p>使用单调递增栈解决，一一算出栈顶的元素。见动画演示-单调栈</p>
+<p><strong>36.</strong>   <strong>力扣****85-<strong><strong>最大矩形</strong></strong>(Hot100)</strong></p>
+<p>利用力扣84题来解决，遍历每一行就将柱状图的高度加1，求柱状图最大的矩形。</p>
+<p><strong>37.</strong>   *<em>力扣</em>**<em>90-<strong><strong>子集</strong></strong>II</em>*</p>
+<p><strong>二刷出现问题</strong></p>
+<p>与力扣78子集相比，需要进行去重操作</p>
+<p><strong>38.</strong>   *<em>力扣</em><em>*<em>93-<strong><strong>复原</strong></strong>IP</em>*</em><em>地址</em>*</p>
+<p><strong>二刷出现问题</strong></p>
+<p>首先判断ip地址是否合法，合法时，在单层循环逻辑时，插入逗点，并用pointnum记录逗点的数量，不合法时，就退出循环，就没有必要再往下去递归，递归终止条件，当逗点数量到达3时，就判断最后一段是否合法，合法就存入结果数组当中，不合法就返回。</p>
+<p>判断ip地址合法的代码中有几个需要注意的点，。一是start大于end，是判断第四段字符串是否为空的情况，如果为空的话，就说明不合法，不为空的话，再往下判断。二是如果首字母是0的话，看此时start是否等于end，等于end的话说明只有0这一个字母，不等于end的话说明0作为开头就不合法。三，如果遇到是非法字符的话或者是大于255，不合法。</p>
+<p><strong>39.</strong>   *<em>力扣</em>***94-**<strong>二叉树的中序遍历</strong></p>
+<p>使用迭代法来遍历，与前序和后序不同，处理顺序和访问顺序不一样。为了达到处理顺序和访问顺序一样，需要一直将左子树入栈，当左子树为空的时候，再去处理左子树。</p>
+<p><strong>40.</strong>   *<em>力扣</em>***96-**<strong>不同的二叉搜索树</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>dp[1] &#x3D; 1;</p>
+<p>dp[2]可分解为dp[0]dp[1]+dp[1]dp[0]</p>
+<p>dp[3]可分解为dp[0]dp[2]+dp[1]dp[1]+dp[2]dp[0]</p>
+<p>dp[4]可分解为dp[0]dp[3]+dp[1]dp[2]+dp[2]dp[1]+dp[3]dp[0]</p>
+<p>可得到递推公式dp[i] +&#x3D; dp[j-1]*dp[i-j]</p>
+<p><strong>41.</strong>   *<em>力扣</em>***98-**<strong>验证二叉树</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>空的二叉树也是二叉搜索树</p>
+<p><strong>方法一：中序遍历存入<strong><strong>vector</strong></strong>容器中</strong></p>
+<p>通过中序遍历存入vector容器中，就是有序的，所以可以判断前面的数值一旦大于后面的值，就返回假。</p>
+<p><strong>方法二：迭代法</strong></p>
+<p>通过中序遍历二叉树，利用pre记录前一节点，一旦前一节点大于后一节点的值，就返回假，遍历结束就返回真</p>
+<p><strong>方法三：递归法</strong></p>
+<p>不能单纯的比较左节点小于中间节点，右节点大于中间节点就完事了。我们要比较的是 左子树所有节点小于中间节点，右子树所有节点大于中间节点。通过中序遍历二叉树，利用pre记录前一节点，一旦前一节点大于后一节点的值，就返回假，遍历结束就返回真</p>
+<p><strong>42.</strong>   *<em>力扣</em>***101-**<strong>对称二叉树</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p><strong>使用递归三部曲</strong></p>
+<p>1.确定好递归参数和返回值</p>
+<p>bool traversal(Treenode *left,Treenode *right)</p>
+<p>2.确定好终止条件</p>
+<p>左子树为空，右子树不为空，为假</p>
+<p>左子树为空，右子树为空，为假</p>
+<p>左子树为空，右子树为空，为真</p>
+<p>左子树的值不等于右子树的值，为假</p>
+<p>注意以上都是else if，当都不满足以上条件时，即为左子树的值等于右子树的值</p>
+<p>3.确定单层循环的逻辑</p>
+<p>bool outside &#x3D; traversal(left-&gt;left,right-&gt;right);</p>
+<p>bool inside &#x3D; traversal(left-&gt;right,right-&gt;left)</p>
+<p>return outside &amp;&amp; inside</p>
+<p><strong>使用迭代法相同的判断条件</strong></p>
+<p><strong>43.</strong>   *<em>力扣</em>***104-**<strong>二叉树的最大深度</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>三种方法</p>
+<p>一是层序遍历</p>
+<p>二是后序遍历，后序遍历求得是高度，高度即为最大深度</p>
+<p>三是前序遍历，前序遍历求得是深度。</p>
+<p>终止条件是if(root-&gt;left &#x3D;&#x3D; nullptr &amp;&amp; root-&gt;right &#x3D;&#x3D; nullptr)，因为当左右子树都为空的时候，就没必要再往下去求深度了。</p>
+<p>单层循环的逻辑中为什么还要判断左子树或者右子树为空？因为终止条件只是左右子树都为空的情况下，并没有筛选掉左子树为空，右子树存在或者是左子树存在，右子树为空这两种情况。左右子树为空的话，就没有必要求深度。</p>
+<p><strong>44.</strong>   *<em>力扣</em>***105-**<strong>从前序遍历和中序遍历构造二叉树</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>典型案例:前序:[2,1] 中序:[1,2]</p>
+<p>(1)  递归函数中首先判断后序数组大小是否为0,直接返回空节点。(出现数组为0的情况，说明此时为空节点，就没有必要往下执行)</p>
+<p>(2)  第二步：如果不为空，那么取后序数组最后一个元素作为节点元素。</p>
+<p>(3)  第三步：找到后序数组最后一个元素在中序数组的位置，作为切割点</p>
+<p>(4)  第四步：切割中序数组，切成中序左数组和中序右数组 （顺序别搞反了，一定是先切中序数组）</p>
+<p>(5)  第五步：切割后序数组，切成后序左数组和后序右数组</p>
+<p>(6)  第六步：递归处理左区间和右区间</p>
+<p><strong>45.</strong>   *<em>力扣</em>***106-**<strong>从中序遍历和后序遍历构造二叉树</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>典型案例: 中序:[2,1] 后序:[2,1] </p>
+<p>(1)  递归函数中首先判断后序数组大小是否为0,直接返回空节点。(出现数组为0的情况，说明此时为空节点，就没有必要往下执行)</p>
+<p>(2)  第二步：如果不为空，那么取后序数组最后一个元素作为节点元素。</p>
+<p>(3)  第三步：找到后序数组最后一个元素在中序数组的位置，作为切割点</p>
+<p>(4)  第四步：切割中序数组，切成中序左数组和中序右数组 （顺序别搞反了，一定是先切中序数组）</p>
+<p>(5)  第五步：切割后序数组，切成后序左数组和后序右数组</p>
+<p>(6)  第六步：递归处理左区间和右区间</p>
+<p><strong>46.</strong>   *<em>力扣</em>***108-**<strong>将有序数组转换成二叉搜索树</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>递归法：见代码随想录</p>
+<p><strong>47.</strong>   *<em>力扣</em>***110-**<strong>平衡二叉树</strong></p>
+<p>特殊情况是左右子树出现不是平衡二叉树的话，应该在单层逻辑判断一下，得到的高度是否是-1，是-1的话，就直接返回-1。</p>
+<p><strong>48.</strong>   *<em>力扣</em>***111-**<strong>二叉树的最小深度</strong></p>
+<p>采用后序遍历来求二叉树的最小深度</p>
+<p>1.确定好递归参数和返回值</p>
+<p>int getdepth(Treenode *root)</p>
+<p>2.确定好终止条件</p>
+<p>当树为空的时候，就返回</p>
+<p>3.确定单层循环的逻辑</p>
+<p>int leftdepth &#x3D; getdepth (root -&gt;left);</p>
+<p>int rightdepth &#x3D; getdepth (root -&gt;right)</p>
+<p>当左子树为空右子树不为空就去求右子树的最小深度，这时并不是最低点</p>
+<p>当右子树为空左子树不为空就去求左子树的最小深度，这时并不是最低点</p>
+<p>如果左右子树都不为空，返回左右子树深度最小值 + 1 。</p>
+<p><strong>49.</strong>   *<em>力扣</em>***112-**<strong>路径总和</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p><strong>方法一：递归法</strong></p>
+<p>见代码随想录</p>
+<p><strong>方法二：迭代法</strong></p>
+<p>如果使用栈模拟递归的话，那么如果做回溯呢？</p>
+<p>此时栈里一个元素不仅要记录该节点指针，还要记录从头结点到该节点的路径数值总和。c++就我们用pair结构来存放这个栈里的元素。定义为：pair&lt;treenode*, int&gt; pair&lt;节点指针，路径数值&gt;这个为栈里的一个元素。</p>
+<p><strong>50.</strong>   *<em>力扣</em>**<em>113-<strong><strong>路径总和</strong></strong>II</em>*</p>
+<p><strong>二刷出现问题</strong></p>
+<p><strong>方法一：递归法</strong></p>
+<p>见代码随想录</p>
+<p>搜索整棵树，不需要处理递归返回值，递归函数就不需要返回值</p>
+<p>搜索整棵树，需要处理递归返回值，递归函数就需要返回值</p>
+<p>搜索其中一条符合条件的路径，递归一定需要返回值，遇到符合条件的路径要及时返回。</p>
+<p><strong>51.</strong>   <strong>力扣****124-<strong><strong>二叉树的最大路径和</strong></strong>(Hot100)</strong></p>
+<p>递归三部曲</p>
+<p>**1.**<strong>确定好递归函数的参数和返回值</strong></p>
+<p>int dfs(Treenode *root)，返回值应该为左子树和右子树中的最大值加上根节点的值。</p>
+<p>**2.**<strong>确定终止条件</strong></p>
+<p>终止条件，遇到空节点，返回0；</p>
+<p>**3.**<strong>确定单层递归的逻辑</strong></p>
+<p>采用后序遍历，分别计算左子树和右子树的最大路径和，使用res记录左子树或者右子树中的最大值。</p>
+<p><strong>52.</strong>   <strong>力扣****128-<strong><strong>最长连续序列</strong></strong>(Hot100)</strong></p>
+<p>见题解林小鹿</p>
+<p><strong>53.</strong>   *<em>力扣</em>***131-**<strong>分割回文串</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>将分割问题转化成组合问题，递归结束的条件是，startindex &gt;&#x3D; s.size()</p>
+<p>如何取得子串，用i和startindex来取得子串。</p>
+<p>如何判断回文串，用双指针法。</p>
+<p><strong>54.</strong>   *<em>力扣</em>***134-**<strong>加油站</strong></p>
+<p><strong>方法一</strong><strong>:</strong></p>
+<p>(1)如果gas的总和小于cost总和，那么无论从哪里出发，一定是跑不了一圈的</p>
+<p>(2)rest[i] &#x3D; gas[i]-cost[i]为一天剩下的油，i从0开始计算累加到最后一站，如果累加没有出现负数，说明从0出发，油就没有断过，那么0就是起点。</p>
+<p>(3)如果累加的最小值是负数，汽车就要从非0节点出发，从后向前，看哪个节点能这个负数填平，能把这个负数填平的节点就是出发节点。</p>
+<p><strong>方法二</strong><strong>:</strong></p>
+<p>(1)总油量-总消耗量大于零是一定可以从某个点出发的，小于零的话就不行</p>
+<p>(2)一旦在一个点出发，油量小于零说明不能从这个点出发，就从下一个点出发，更新一下油量为零。</p>
+<p><strong>55.</strong>   <strong>力扣****136-<strong><strong>只出现一次的数字</strong></strong>(Hot100)</strong></p>
+<p>出现相同数字异或之后变为0，只有一次数字与0异或就是本身</p>
+<p><strong>56.</strong>   <strong>力扣****141-<strong><strong>环形链表</strong></strong>(Hot100)</strong></p>
+<p>与环形链表II比较，环形链表只需要在相遇的时候，返回真，没有找到就返回假</p>
+<p><strong>57.</strong>   *<em>力扣</em>**<em>142-<strong><strong>环形链表</strong></strong>II</em>*</p>
+<p><strong>二刷出现问题</strong></p>
+<p>(1)为什么不等于slow,前面经过判断以后,如果不满足以上条件的话,fast进入下个判断条件时间复杂度低</p>
+<p>(2)为什么以index2作为循环结束的条件,因为fast已经不在头节点的位置了.</p>
+<p>(3)为什么写后面,因为[1,2]这种情况在1相遇,所以应该首先判断是否已经到达环形节点入口</p>
+<p>(4)找到相遇的节点之后，需要判断while(index1 !&#x3D; index2)。</p>
+<p><strong>58.</strong>   *<em>力扣</em>***150-**<strong>逆波兰表达式求值</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>(1)使用stoi函数将字符串转化成整型数字(stoi(string s,int pos &#x3D; 0,int n &#x3D; 10))</p>
+<p><strong>59.</strong>   *<em>力扣</em>***151-**<strong>颠倒字符串的单词</strong></p>
+<p><strong>算法流程****1:</strong></p>
+<p>(1)首先将字符串的首尾空格去除掉</p>
+<p>(2)将字符串以空格为分隔符将字符串以头端插入到deque中</p>
+<p>(3)再从deque中一个一个的取出来放到string当中,并且每个字符串都要加上空格符号</p>
+<p><strong>算法流程****2:</strong></p>
+<p>(1)首先将字符串的首空格去除掉</p>
+<p>(2)在将字符串中的冗余空格符号删除</p>
+<p>(3)如果尾部的空格符号也存在，也要删除。</p>
+<p>(4)将整个字符串反转。</p>
+<p>(5)以空格符号为分界点将字符串反转。</p>
+<p><strong>二刷出现问题</strong></p>
+<p><strong>60.</strong>   *<em>力扣</em>***152-**<strong>乘积最大子数组</strong></p>
+<p>见图解算法</p>
+<p><strong>61.</strong>   *<em>力扣</em>***202-**<strong>快乐数</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>判断根据公式计算出来的数，一旦出现无限循环，即为假。</p>
+<p>这题目有个技巧，如何求百位十位个位的平方和。</p>
+<p><strong>62.</strong>   *<em>力扣</em>***203-**<strong>移除链表元素</strong></p>
+<p>(1)需要建立临时节点来储存要删除的节点</p>
+<p>(2)需要更新一下头节点,才是最新的头节点。</p>
+<p>(3)二刷出现问题，需要利用虚拟头节点。</p>
+<p><strong>63.</strong>   *<em>力扣</em>***206-**<strong>反转链表</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>可直接将虚拟头节点设置为nullptr;</p>
+<p><strong>64.</strong>   *<em>力扣</em>***209-**<strong>长度最小的子数组</strong></p>
+<p>二刷出现错误</p>
+<p>更新窗口，是用while一直判断，而不是用if。</p>
+<p><strong>65.</strong>   *<em>力扣</em>**<em>213-<strong><strong>打家劫舍</strong></strong>II</em>*</p>
+<p>典型案例:[1,6,1,9,1]</p>
+<p>情况一：考虑不包含首尾元素</p>
+<p>情况二：考虑包含首元素，不包含尾元素</p>
+<p>情况三：考虑包含尾元素，不包含首元素</p>
+<p><strong>66.</strong>   *<em>力扣</em>**<em>216-<strong><strong>组合总和</strong></strong>III</em>*</p>
+<p>注意剪枝优化，已经大于7的就没有必要往下算</p>
+<p>sum &#x3D;&#x3D; n如果与vec.size()&#x3D;&#x3D;k写成并集的话，会报越界错误。</p>
+<p><strong>67.</strong>   *<em>力扣</em>***222-**<strong>完全二叉树的节点个数</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>**1.**<strong>可以按照普通二叉树的方法来求</strong></p>
+<p>**2.**<strong>可以利用完全二叉树的性质</strong></p>
+<p>完全二叉树只有两种情况，情况一：就是满二叉树，情况二：最后一层叶子节点没有满。</p>
+<p>对于情况一，可以直接用 2^树深度 - 1 来计算，注意这里根节点深度为1。</p>
+<p>对于情况二，分别递归左孩子，和右孩子，递归到某一深度一定会有左孩子或者右孩子为满二叉树，然后依然可以按照情况1来计算。</p>
+<p><strong>68.</strong>   *<em>力扣</em>***225-**<strong>用栈实现队列</strong></p>
+<p>(1)只有当第二个栈为空的时候才把第一个栈的元素都传进去</p>
+<p>(2)注意函数复用，比如peek函数就可以使用pop函数。</p>
+<p><strong>69.</strong>   *<em>力扣</em>***226-**<strong>翻转二叉树</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>这题只需要交换左子树和右子树节点，前序遍历和后序遍历都可以，中序遍历不可以，因为会把左子树和右子树节点交换两次。</p>
+<p><strong>70.</strong>   *<em>力扣</em>***232-**<strong>用队列实现栈</strong></p>
+<p>典型案例: push(1) push(2) push(3) push(4) pop() push(5);</p>
+<p><strong>71.</strong>   *<em>力扣</em>***235-**<strong>二叉搜索树的最近公共祖先</strong></p>
+<p>利用二叉搜索树的性质，去递归。因为p,q为不同节点且均存在于给定的二叉搜索树，所以一定会找到。</p>
+<p><strong>方法一：递归法</strong></p>
+<p>一旦找到，就立刻返回。</p>
+<p><strong>方法二：迭代法</strong></p>
+<p><strong>72.</strong>   *<em>力扣</em>***236-**<strong>二叉树的最近公共祖先</strong></p>
+<p>使用后序遍历，因为是自下而上地去寻找最近公共祖先。</p>
+<p><strong>73.</strong>   *<em>力扣</em>***239-**<strong>滑动窗口最大值</strong></p>
+<p><strong>典型特例</strong><strong>:[1,-1],k&#x3D;1</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>设计单调队列的时候，pop，和push操作要保持如下规则：</p>
+<p>pop(value)：如果窗口移除的元素value等于单调队列的出口元素，那么队列弹出元素，否则不用任何操作</p>
+<p>push(value)：如果push的元素value大于队列后面元素的数值，那么就将队列后面元素弹出，直到push元素的数值小于等于队列入口元素的数值为止</p>
+<p><strong>74.</strong>   *<em>力扣</em>***257-**<strong>二叉树的所有路径</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>方法一：递归法</p>
+<p>注意回溯</p>
+<p>方法二：迭代法</p>
+<p>定义二个栈，一个储存节点，另外一个储存路径</p>
+<p>这两个方法都要用到to_string这个函数</p>
+<p><strong>75.</strong>   *<em>力扣</em>***343-**<strong>整数拆分</strong></p>
+<p><strong>方法一</strong>**:**<strong>数学方法</strong></p>
+<p><strong>方法二</strong>**:**<strong>动态规划</strong></p>
+<p><strong>76.</strong>   *<em>力扣</em><em>*<em>347-<strong><strong>前</strong></strong>K</em>*</em><em>个高频元素</em>*</p>
+<p>利用unordered_map统计各个元素出现的次数，再用小顶堆统计前K个高频元素，在倒序输出。</p>
+<p><strong>77.</strong>   *<em>力扣</em>***404-**<strong>左叶子之和</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p><strong>方法一：递归法</strong></p>
+<p>终止条件：if(node-&gt;left &amp;&amp; (!node-&gt;left-&gt;left &amp;&amp; !node-&gt;left-&gt;right)，这才是真正到达左节点。如果左节点不为空，且左节点没有左右孩子，那么这个节点的左节点就是左叶子</p>
+<p>确定单层逻辑：当遇到左叶子节点的时候，记录数值，然后通过递归求取左子树左叶子之和，和 右子树左叶子之和，相加便是整个树的左叶子之和。</p>
+<p><strong>方法二：迭代法</strong></p>
+<p>到达左叶子节点，就求左叶子节点之和</p>
+<p><strong>78.</strong>   *<em>力扣</em>***450-**<strong>删除二叉搜索树中的节点</strong></p>
+<p>if(pre&#x3D;&#x3D;nullptr) 头节点满足删除条件，左右孩子为空。</p>
+<p>第一种情况:未找到节点，直接返回根节点</p>
+<p>第二种情况:找到节点，左右孩子为空，直接返回null</p>
+<p>第三种情况:找到节点，左孩子为空，返回右孩子</p>
+<p>第四种情况:找到节点，右孩子为空，返回左孩子</p>
+<p>第五种情况:找到节点，左右孩子不为空</p>
+<p>在deleoneNode函数中，if(target-&gt;right &#x3D;&#x3D; nullptr) return target-&gt;left，完成了第二种情况和第四种情况，接下来的几步就完成了第三种和第五种情况。</p>
+<p><strong>79.</strong>   *<em>力扣</em>**<em>453-<strong><strong>四数相加</strong></strong>II</em>*</p>
+<p><strong>二刷出现错误</strong></p>
+<p>为什么不能用unordered_multiset?</p>
+<p>因为在判断的时候，一旦出现这个元素，就会把结果+1，而没有将重复的次数考虑在内，所以需要用unordered_map统计元素出现的次数，将元素出现的次数相加即为最后的结果</p>
+<p><strong>80.</strong>   *<em>力扣</em>***459-**<strong>重复的子字符串</strong></p>
+<p>假设重复出现的子字符串长度为x，整个字符串由n个x组成，那么最长相同前后缀的长度必然为mx，而且n - m &#x3D; 1，因为最长相同前后缀不包括字符串本身。所以nx % (n - m)x &#x3D; 0，就可以判定有重复出现的子字符串。</p>
+<p><strong>81.</strong>   *<em>力扣</em>***491-**<strong>递增子序列</strong></p>
+<p><strong>二刷出现错误</strong></p>
+<p>递增子序列大小一定是大于等于2，所以终止条件为大小是大于1就将结果存进去，一旦出现递减或者出现重复，就跳过，不能将这个元素存进去。</p>
+<p><strong>82.</strong>   *<em>力扣</em>***501-**<strong>二叉搜索树的众数</strong></p>
+<p><strong>二刷出现错误</strong></p>
+<p>见代码随想录</p>
+<p><strong>83.</strong>   *<em>力扣</em>***513-**<strong>找树左下角的值</strong></p>
+<p><strong>二刷出现错误</strong></p>
+<p><strong>方法一：递归法</strong></p>
+<p>达到最大深度最左边即为树的左下角，最大深度可以利用前序遍历来求，注意回溯，如何知道达到最左边？可以使用前序遍历，这样才先优先左边搜索，然后记录深度最大的叶子节点，此时就是树的最后一行最左边的值。</p>
+<p><strong>方法二：层序遍历</strong></p>
+<p>比递归法好理解，只需要记录最后一行第一个节点的数值就可以了。</p>
+<p><strong>84.</strong>   *<em>力扣</em>***530-**<strong>二叉树搜索树的最小绝对差</strong></p>
+<p><strong>二刷出现错误</strong></p>
+<p><strong>方法一：递归法</strong></p>
+<p>先使用中序遍历将各个节点的值存在vector容器中，因为二叉搜索树是有序的，vector容器自然也是有序的，在遍历vector容器，计算绝对值的最小值。</p>
+<p><strong>方法二：递归法</strong></p>
+<p>也是中序遍历，使用pre记录前一个节点的值，在计算，用result记录最小值</p>
+<p><strong>方法三：迭代法</strong></p>
+<p>也是中序遍历，使用pre记录前一个节点的值，在计算，用result记录最小值</p>
+<p><strong>85.</strong>   *<em>力扣</em>***538-**<strong>把二叉搜索树转换成累加树</strong></p>
+<p><strong>方法一：递归法</strong><strong>(<strong><strong>反中序遍历，右左中，发现题目的规律</strong></strong>)</strong></p>
+<p><strong>方法二：迭代法</strong></p>
+<p>无论是递归法还是迭代法，需要用pre记录前一节点的累加值。</p>
+<p><strong>86.</strong>   *<em>力扣</em>***617-**<strong>合并二叉树</strong></p>
+<p><strong>二刷出现错误</strong></p>
+<p><strong>方法一：递归法</strong></p>
+<p>递归三部曲，见代码随想录。</p>
+<p><strong>方法二：迭代法</strong></p>
+<p>利用队列来做广度优先遍历，采用前序遍历，</p>
+<p>(1)当root1的左节点不为空，root2的左节点不为空的情况下，应该把root1的左节点和root2的左节点入队列。</p>
+<p>(2)当root1的右节点不为空，root2的右节点不为空的情况下，应该把root1的右节点和root2的右节点入队列。</p>
+<p>(3)当root1的左节点为空，root2的左节点不为空的情况下，应该把root2的左节点返回root1的左节点。</p>
+<p>(4)当root1的右节点为空，root2的右节点不为空的情况下，应该把root2的右节点返回root1的右节点。</p>
+<p><strong>87.</strong>   *<em>力扣</em>***654-**<strong>最大二叉树</strong></p>
+<p><strong>二刷出现错误</strong></p>
+<p>见代码随想录</p>
+<p><strong>88.</strong>   *<em>力扣</em>***669-**<strong>修剪二叉树</strong></p>
+<p><strong>二刷出现错误</strong></p>
+<p>先裁剪小于或者大于区间的树节点，再用root-&gt;left或者root-&gt;right去接受，树节点裁剪后的子节点。</p>
+<p><strong>89.</strong>   *<em>力扣</em><em>*<em>698-<strong><strong>划分为</strong></strong>K</em>*</em><em>个相等的子集</em>*</p>
+<p>利用回溯+剪枝优化解决这道题目</p>
+<p>力扣473-火柴拼正方形一模一样的思路</p>
+<p><strong>90.</strong>   *<em>力扣</em>***700-**<strong>二叉树搜索树中的搜索</strong></p>
+<p><strong>二刷出现错误</strong></p>
+<p><strong>方法一：递归法</strong></p>
+<p>终止条件，if(root &#x3D;&#x3D; nullptr || root-&gt;val &#x3D;&#x3D; val) return root;</p>
+<p>见代码随想录</p>
+<p><strong>方法二：迭代法</strong></p>
+<p>利用二叉树搜索树的特性来进行迭代，根节点的左子树都比根节点小，根节点的右子树都比根节点大。</p>
+<p><strong>91.</strong>   *<em>力扣</em>***701-**<strong>二叉搜索树中的插入操作</strong></p>
+<p><strong>方法一：递归法</strong></p>
+<p>一旦找到空节点，就在这个空节点插入，用返回值去接受这个节点。</p>
+<p><strong>方法二：迭代法</strong></p>
+<p>利用parent记录空节点的父节点，在通过这个父节点插入就可以了。</p>
+<p><strong>92.</strong>   *<em>力扣</em>***714-**<strong>买卖股票的最佳时机含手续费</strong></p>
+<p>1 3 2 8 4 9</p>
+<p>1 3 2 8 7 9</p>
+<p>理解代码中的minprice &#x3D; price[i] - fee:如果是第一种情况的话，9 - 4 - 2所获得利润是大于9 - (8 - 2) - 2的利润，所以最大获利利润是8 - 1 - 2 + 9 - 4 - 2。如果是第二种情况的话，9 - 7 - 2是小于9 - 6 - 2的利润的，所以最大获利利润是8 - 1 - 2 + 9 - 6 - 2，其中的意思是(8 - 2) – 1 + 9 - (8 - 2) - 2 &#x3D; 9 - 2 - 1,在最小股票价格买入时一直持有，直到最后才卖出，这时才计算利润，只用计算一次的手续费。</p>
+<p><strong>93.</strong>   *<em>力扣</em>***844-**<strong>比较含退格的字符串</strong></p>
+<p><strong>二刷出现错误</strong></p>
+<p>思路直接用string容器进行判断。</p>
+<p><strong>94.</strong>   *<em>力扣</em>***968-**<strong>监控二叉树</strong></p>
+<p>第一种情况:左右节点都有覆盖</p>
+<p>第二种情况:左右节点至少有一个无覆盖</p>
+<p>第三种情况:左右节点至少有一个有摄像头 </p>
+<p>第四种情况:头节点没有覆盖</p>
+<p><strong>95.</strong>   *<em>力扣</em>***977-**<strong>有序数组的平方</strong></p>
+<p><strong>二刷出现错误</strong></p>
+<p>利用快慢指针进行解题，需要从后往前遍历。</p>
+<p><strong>96.</strong>   <strong>力扣****1047</strong></p>
+<p>注意||符号，从左开始匹配，一旦匹配就直接执行，不管||右边的条件。</p>
+<p><strong>97.</strong>   *<em>剑指</em>***offer03-**<strong>数组中重复的数字</strong></p>
+<p>原地交换</p>
+<p><strong>98.</strong>   *<em>剑指</em>***offer05-**<strong>替换空格</strong></p>
+<p><strong>二刷出现问题</strong></p>
+<p>利用双指针解法</p>
+<p><strong>99.</strong>   *<em>剑指</em>***offer29-**<strong>顺时针打印</strong></p>
+<p>(1)二级指针不能打印出二维数组的行与列,需要通过数组名来打印二维数组的行与列。</p>
+<p>(2)出现bug时,多注意for循环,if赋值符号是否正确</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">蔡伟</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/08/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">http://example.com/2022/08/03/刷题笔记/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">憨憨小胖</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">力扣刷题笔记</a></div><div class="post_share"><div class="social-share" data-image="/img/5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/loading.gif" data-original="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/loading.gif" data-original="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/07/31/C-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/"><img class="next-cover" src="/img/loading.gif" data-original="/img/6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C++数据库连接池</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="/img/%E5%A4%B4%E5%83%8F.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">蔡伟</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" title="刷题笔记"><img src="/img/loading.gif" data-original="/img/5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="刷题笔记"/></a><div class="content"><a class="title" href="/2022/08/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" title="刷题笔记">刷题笔记</a><time datetime="2022-08-03T03:10:22.000Z" title="发表于 2022-08-03 11:10:22">2022-08-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/31/C-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="C++数据库连接池"><img src="/img/loading.gif" data-original="/img/6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++数据库连接池"/></a><div class="content"><a class="title" href="/2022/07/31/C-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="C++数据库连接池">C++数据库连接池</a><time datetime="2022-07-31T14:21:06.000Z" title="发表于 2022-07-31 22:21:06">2022-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="数据库连接池"><img src="/img/loading.gif" data-original="/img/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库连接池"/></a><div class="content"><a class="title" href="/2022/07/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="数据库连接池">数据库连接池</a><time datetime="2022-07-29T07:48:32.000Z" title="发表于 2022-07-29 15:48:32">2022-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/29/%E5%9F%BA%E4%BA%8Emuduo%E7%BD%91%E7%BB%9C%E5%BA%93%E7%9A%84%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" title="基于muduo网络库的集群服务器项目"><img src="/img/loading.gif" data-original="/img/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于muduo网络库的集群服务器项目"/></a><div class="content"><a class="title" href="/2022/07/29/%E5%9F%BA%E4%BA%8Emuduo%E7%BD%91%E7%BB%9C%E5%BA%93%E7%9A%84%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" title="基于muduo网络库的集群服务器项目">基于muduo网络库的集群服务器项目</a><time datetime="2022-07-29T07:46:09.000Z" title="发表于 2022-07-29 15:46:09">2022-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/29/STL%E5%92%8C%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="STL和泛型编程笔记"><img src="/img/loading.gif" data-original="/img/2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="STL和泛型编程笔记"/></a><div class="content"><a class="title" href="/2022/07/29/STL%E5%92%8C%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="STL和泛型编程笔记">STL和泛型编程笔记</a><time datetime="2022-07-29T07:24:48.000Z" title="发表于 2022-07-29 15:24:48">2022-07-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 蔡伟</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script type="text/javascript" src="/js/fairyDustCursor.js"></script><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body></html>
