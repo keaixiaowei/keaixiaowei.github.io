@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Linux操作系统</title>
+      <link href="/2022/08/06/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <url>/2022/08/06/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-文件管理空闲磁盘块的几种算法"><a href="#1-文件管理空闲磁盘块的几种算法" class="headerlink" title="1 文件管理空闲磁盘块的几种算法"></a>1 文件管理空闲磁盘块的几种算法</h2><h3 id="1-1-成组链接法"><a href="#1-1-成组链接法" class="headerlink" title="1.1 成组链接法"></a>1.1 成组链接法</h3><h4 id="1-1-1-分配"><a href="#1-1-1-分配" class="headerlink" title="1.1.1 分配"></a>1.1.1 分配</h4><p><strong>需要1个空闲块</strong></p><p><img src="/img/%E5%9B%BE%E7%89%87/10-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-01(1).png" alt="本地png图片PictureTest.png"></p><p><img src="/img/%E5%9B%BE%E7%89%87/10-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-01(2).png" alt="本地png图片PictureTest.png"></p><p>找到第一个空闲块为201，将201分配出去，将超级快的下一组空闲盘块数修改为99</p><p><strong>需要100个空闲块</strong></p><p><img src="/img/%E5%9B%BE%E7%89%87/10-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-01(3).png" alt="本地png图片PictureTest.png"></p><p><img src="/img/%E5%9B%BE%E7%89%87/10-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-01(4).png" alt="本地png图片PictureTest.png"></p><p>需要将300号块存的东西复制到超级块中，再把300号块分配出去</p><h4 id="1-1-2-回收"><a href="#1-1-2-回收" class="headerlink" title="1.1.2 回收"></a>1.1.2 回收</h4><p><strong>第一种情况，第一组未满</strong></p><p><img src="/img/%E5%9B%BE%E7%89%87/10-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-01(5).png" alt="本地png图片PictureTest.png"></p><p><img src="/img/%E5%9B%BE%E7%89%87/10-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-01(6).png" alt="本地png图片PictureTest.png"></p><p>会将空闲的磁盘块放进超级块中，并将下一组闲盘块数修改为100</p><p><strong>第二种情况，第一组已满</strong></p><p><img src="/img/%E5%9B%BE%E7%89%87/10-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-01(7).png" alt="本地png图片PictureTest.png"></p><p><img src="/img/%E5%9B%BE%E7%89%87/10-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-01(8).png" alt="本地png图片PictureTest.png"></p><p>需要将超级快的数据复制到新回收的块中，并修改超级快的内容，让新回收的块成为第一个分组</p><h3 id="1-2-总结"><a href="#1-2-总结" class="headerlink" title="1.2 总结"></a>1.2 总结</h3><p><img src="/img/%E5%9B%BE%E7%89%87/10-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-02(1).png" alt="本地png图片PictureTest.png"></p><p>用户接口是文件操作，文件目录系统是文件目录，存取控制模块是文件保护，逻辑文件系统与文件信息缓冲区是文件的逻辑结构，物理文件系统是文件的物理结构，辅助分配模块是文件存储空间管理上，设备管理模块是磁盘</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>刷题笔记</title>
       <link href="/2022/08/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/"/>
       <url>/2022/08/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/</url>
